@@ -1,0 +1,160 @@
+import string
+s = 'ggaabhtt'
+result = ''
+for i in string.ascii_letters:
+    if s.count(i) >= 1:
+        result+=i
+#result = list(result)
+#result = ''.join(result)
+
+print(result)
+
+===================================================================
+
+def addition(m,n) :
+		sum=int(0)
+		for i in range (m,n+1) :
+			sum+=i
+		return sum
+
+
+x=input('Enter first number : \n')
+y=input('Enter second number : \n')
+p=int(x)
+q=int(y)
+z=(addition(p,q))
+print(z)
+
+===================================================================
+
+s1 = input('Enter a sentence : \n')
+print(s1)
+s2=s1.replace(" ","")
+print(s2)
+s3=s2.lower()
+print(s3)
+rev=s3[::-1]
+print(rev)
+
+if s3==rev :
+	print('PALINDROME STRING')
+else :
+	print('NOT PALINDROME STRING')
+
+===================================================================
+
+def prime(num):
+    n=1
+    for n in range (2,num):
+        flag=1
+        for i in range (2,int((n/2)+1)):
+            if(n%i==0) :
+                flag=0
+        if (flag==1) :
+            print(n)
+        n=n+1
+        
+x=input('Enter a number :\n')
+number = int(x)
+prime(number)
+
+===================================================================
+
+import socket
+import sys
+
+s=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+port = 80
+host_ip = socket.gethostbyname('www.google.com')
+s.connect((host_ip,port))
+print('Connecttion to ',host_ip,' is set on port ',port)
+
+====================================================================
+
+import socket
+
+s=socket.socket()
+print('Socket created')
+port=12345
+
+s.bind(('',port))
+print('\nSocket binded to port')
+s.listen(100)
+while True :
+	c, addr = s.accept()
+	c.send("Thank You for connecting")
+	c.close()
+
+
+
+import socket
+
+s=socket.socket()
+port=12345
+
+s.connect(('127.0.0.1',port))
+print (s.recv(1024))
+s.close()
+
+===================================================================
+
+f=open("text.txt")
+s1=(f.read())
+
+print(s1)
+length = len(s1)
+
+vc=0
+cc=0
+
+for i in range (0,length):
+	c = s1[i]
+	if c in ('a','e','i','o','u','A','E','I','O','U'):
+		vc=vc+1
+	else:
+		cc=cc+1
+
+print("vowels : ", vc)
+print("\nconsonants : ", cc)
+
+==================================================================
+
+f = open("contacts.txt")
+
+sv = input('Enter Registration Number to be searched :  ')
+
+for x in f:
+	s1=x
+	for j in range (0,len(s1)):
+		if s1[j]==';':
+			ind = j
+			break
+	regno=s1[0:int(ind)]
+	if regno == sv:
+		print('\nRecord Found!!\n')
+		name = s1[int(ind+1):len(s1)]
+		print('\nThe Name is : \n', name)
+		break
+
+==================================================================
+
+import sqlite3
+
+c = sqlite3.connect('prac1.db')
+print('Table opened sucessfully')
+
+c.execute("CREATE TABLE STUDENT (NAME TEXT, ROLL INT, MARKS1 INT, MARKS2 INT)")
+c.execute("INSERT INTO STUDENT VALUES ('DHRUMIL',404,98,95)")
+c.execute("INSERT INTO STUDENT VALUES ('MOLEENA',426,99,100)")
+c.execute("INSERT INTO STUDENT VALUES ('PARAM',201,83,89)")
+
+cursor=c.execute("SELECT NAME,ROLL,MARKS1,MARKS2 FROM STUDENT")
+for row in cursor:
+	print (row[0])
+	print ("\n",row[1],end=" ")
+	print ("\n",row[2],end=" ")
+	print ("\n",row[3],end=" ")
+print('Table created sucessfully')
+c.close()
+
+=====================================================================
